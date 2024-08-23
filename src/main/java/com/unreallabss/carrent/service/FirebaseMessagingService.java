@@ -1,6 +1,7 @@
-package com.rcs.service;
+package com.unreallabss.carrent.service;
 
-import com.rcs.domain.NotificationMassage;
+
+import com.unreallabss.carrent.domain.NotificationMassage;
 
 public interface FirebaseMessagingService {
 

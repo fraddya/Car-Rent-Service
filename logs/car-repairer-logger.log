@@ -1,0 +1,139 @@
+21:27:28.833 [main] INFO  com.unreallabss.carrent.CarRentApplication - Starting CarRentApplication using Java 17.0.9 with PID 12256 (G:\MyProject\Spring-service\TESTING_PROJECT\jwt-apigateway-security\CarRent\target\classes started by fraddy in G:\MyProject\Spring-service\TESTING_PROJECT\jwt-apigateway-security\CarRent)
+21:27:28.866 [main] INFO  com.unreallabss.carrent.CarRentApplication - No active profile set, falling back to 1 default profile: "default"
+21:27:30.459 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:27:30.584 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 113 ms. Found 2 JPA repository interfaces.
+21:27:31.940 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+21:27:31.953 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+21:27:31.953 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+21:27:32.161 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/carRent/api] - Initializing Spring embedded WebApplicationContext
+21:27:32.162 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3142 ms
+21:27:32.383 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flyway' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception with message: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+21:27:32.391 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+21:27:32.441 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+21:27:32.489 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+21:29:27.976 [main] INFO  com.unreallabss.carrent.CarRentApplication - Starting CarRentApplication using Java 17.0.9 with PID 2164 (G:\MyProject\Spring-service\TESTING_PROJECT\jwt-apigateway-security\CarRent\target\classes started by fraddy in G:\MyProject\Spring-service\TESTING_PROJECT\jwt-apigateway-security\CarRent)
+21:29:27.984 [main] INFO  com.unreallabss.carrent.CarRentApplication - The following 1 profile is active: "local"
+21:29:29.691 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:29:29.814 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 112 ms. Found 2 JPA repository interfaces.
+21:29:30.924 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 20004 (http)
+21:29:30.944 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+21:29:30.945 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+21:29:31.293 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/carRent/api] - Initializing Spring embedded WebApplicationContext
+21:29:31.295 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3126 ms
+21:29:31.705 [main] INFO  org.flywaydb.core.internal.license.VersionPrinter - Flyway Community Edition 9.16.3 by Redgate
+21:29:31.705 [main] INFO  org.flywaydb.core.internal.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+21:29:31.706 [main] INFO  org.flywaydb.core.internal.license.VersionPrinter - 
+21:29:31.717 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:29:32.111 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@504497fa
+21:29:32.115 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:29:32.171 [main] INFO  org.flywaydb.core.internal.database.base.BaseDatabaseType - Database: jdbc:mysql://localhost:3306/car_rent (MySQL 8.0)
+21:29:32.239 [main] INFO  org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Schema history table `car_rent`.`flyway_schema_history` does not exist yet
+21:29:32.244 [main] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 0 migrations (execution time 00:00.022s)
+21:29:32.245 [main] WARN  org.flywaydb.core.internal.command.DbValidate - No migrations found. Are your locations set up correctly?
+21:29:32.308 [main] INFO  org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Creating Schema History table `car_rent`.`flyway_schema_history` ...
+21:29:32.543 [main] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `car_rent`: << Empty Schema >>
+21:29:32.548 [main] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `car_rent` is up to date. No migration necessary.
+21:29:32.832 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:29:33.029 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+21:29:33.039 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+21:29:33.533 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:29:35.606 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+21:29:35.610 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:29:35.649 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'emailService': Unsatisfied dependency expressed through field 'mailSender': No qualifying bean of type 'org.springframework.mail.javamail.JavaMailSender' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+21:29:35.650 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:29:35.654 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:29:35.668 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:29:35.672 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+21:29:35.697 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+21:29:35.741 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field mailSender in com.unreallabss.carrent.service.EmailService required a bean of type 'org.springframework.mail.javamail.JavaMailSender' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.mail.javamail.JavaMailSender' in your configuration.
+
+21:40:15.576 [main] INFO  com.unreallabss.carrent.CarRentApplication - Starting CarRentApplication using Java 17.0.9 with PID 14344 (G:\MyProject\Spring-service\CarRent\target\classes started by fraddy in G:\MyProject\Spring-service\CarRent)
+21:40:15.581 [main] INFO  com.unreallabss.carrent.CarRentApplication - The following 1 profile is active: "local"
+21:40:17.319 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:40:17.513 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 176 ms. Found 2 JPA repository interfaces.
+21:40:18.669 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 20004 (http)
+21:40:18.684 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+21:40:18.685 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+21:40:18.885 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/carRent/api] - Initializing Spring embedded WebApplicationContext
+21:40:18.887 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3192 ms
+21:40:19.250 [main] INFO  org.flywaydb.core.internal.license.VersionPrinter - Flyway Community Edition 9.16.3 by Redgate
+21:40:19.250 [main] INFO  org.flywaydb.core.internal.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+21:40:19.251 [main] INFO  org.flywaydb.core.internal.license.VersionPrinter - 
+21:40:19.267 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:40:19.665 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a38e4dc
+21:40:19.670 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:40:19.736 [main] INFO  org.flywaydb.core.internal.database.base.BaseDatabaseType - Database: jdbc:mysql://localhost:3306/car_rent (MySQL 8.0)
+21:40:19.808 [main] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 0 migrations (execution time 00:00.024s)
+21:40:19.809 [main] WARN  org.flywaydb.core.internal.command.DbValidate - No migrations found. Are your locations set up correctly?
+21:40:19.838 [main] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `car_rent`: << Empty Schema >>
+21:40:19.841 [main] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `car_rent` is up to date. No migration necessary.
+21:40:20.040 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:40:20.162 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+21:40:20.167 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+21:40:20.746 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:40:22.573 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+21:40:22.580 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:40:23.358 [main] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'firebaseMessagingServiceImpl': Unsatisfied dependency expressed through field 'firebaseMessaging': No qualifying bean of type 'com.google.firebase.messaging.FirebaseMessaging' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+21:40:23.359 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:40:23.364 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:40:23.379 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:40:23.384 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+21:40:23.413 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+21:40:23.462 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field firebaseMessaging in com.unreallabss.carrent.service.Impl.FirebaseMessagingServiceImpl required a bean of type 'com.google.firebase.messaging.FirebaseMessaging' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.google.firebase.messaging.FirebaseMessaging' in your configuration.
+

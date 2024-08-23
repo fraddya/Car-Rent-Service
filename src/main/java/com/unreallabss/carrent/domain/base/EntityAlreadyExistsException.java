@@ -1,4 +1,4 @@
-package com.rcs.domain.base;
+package com.unreallabss.carrent.domain.base;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.http.HttpStatus;

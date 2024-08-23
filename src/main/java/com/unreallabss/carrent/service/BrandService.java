@@ -1,7 +1,7 @@
-package com.rcs.service;
+package com.unreallabss.carrent.service;
 
 
-import com.rcs.domain.Brand;
+import com.unreallabss.carrent.domain.Brand;
 
 import java.util.List;
 

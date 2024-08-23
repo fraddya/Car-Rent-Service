@@ -1,4 +1,4 @@
-package com.rcs.enums;
+package com.unreallabss.carrent.enums;
 
 public enum UserType {
     ADMIN("ADMIN", "ADMIN"),

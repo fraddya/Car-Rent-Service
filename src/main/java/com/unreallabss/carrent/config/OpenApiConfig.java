@@ -1,7 +1,8 @@
-package com.rcs.config;
+package com.unreallabss.carrent.config;
 
 
-import com.rcs.util.ReadJsonFileToJsonObject;
+
+import com.unreallabss.carrent.util.ReadJsonFileToJsonObject;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

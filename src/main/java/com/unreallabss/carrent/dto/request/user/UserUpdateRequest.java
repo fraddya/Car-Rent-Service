@@ -1,9 +1,8 @@
-package com.rcs.dto.request.user;
+package com.unreallabss.carrent.dto.request.user;
 
 
-
-import com.rcs.enums.GenderType;
-import com.rcs.enums.UserType;
+import com.unreallabss.carrent.enums.GenderType;
+import com.unreallabss.carrent.enums.UserType;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -34,7 +33,7 @@ public class UserUpdateRequest {
     private String passWord;
     private UserType role;
 
-    private List<VehicleData> vehicle;
+   /* private List<VehicleData> vehicle;
 
     @Data
     public static class VehicleData {
@@ -56,5 +55,5 @@ public class UserUpdateRequest {
         public static class BrandData {
             private Long id;
         }
-    }
+    }*/
 }

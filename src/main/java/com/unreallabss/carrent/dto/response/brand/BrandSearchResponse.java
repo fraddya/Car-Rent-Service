@@ -1,7 +1,7 @@
-package com.rcs.dto.response.brand;
+package com.unreallabss.carrent.dto.response.brand;
 
 
-import com.rcs.enums.Status;
+import com.unreallabss.carrent.enums.Status;
 import lombok.Data;
 
 @Data

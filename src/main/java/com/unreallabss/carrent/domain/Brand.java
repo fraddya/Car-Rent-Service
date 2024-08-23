@@ -1,7 +1,7 @@
-package com.rcs.domain;
+package com.unreallabss.carrent.domain;
 
 
-import com.rcs.enums.Status;
+import com.unreallabss.carrent.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,10 +1,9 @@
-package com.rcs.dto.request.user;
+package com.unreallabss.carrent.dto.request.user;
 
 
-import com.rcs.domain.base.BaseSearchRequest;
-import com.rcs.enums.GenderType;
-import com.rcs.enums.Status;
-import com.rcs.enums.UserType;
+import com.unreallabss.carrent.domain.base.BaseSearchRequest;
+import com.unreallabss.carrent.enums.GenderType;
+import com.unreallabss.carrent.enums.Status;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package com.rcs.config;
+package com.unreallabss.carrent.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

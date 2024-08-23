@@ -1,13 +1,10 @@
-package com.rcs.domain.base;
+package com.unreallabss.carrent.domain.base;
 
 import lombok.Data;
 
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author Nuwan
- */
 @Data
 public class MapResponseWrapper<T> extends BaseResponseWrapper {
 

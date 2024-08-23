@@ -1,15 +1,12 @@
-package com.rcs.domain.base;
+package com.unreallabss.carrent.domain.base;
 
 
 
 
-import com.rcs.enums.RestApiResponseStatus;
+import com.unreallabss.carrent.enums.RestApiResponseStatus;
 
 import java.util.List;
 
-/**
- * @author Nuwan
- */
 public class ListResponseWrapper<T> extends BaseResponseWrapper {
 
     private List<T> content;

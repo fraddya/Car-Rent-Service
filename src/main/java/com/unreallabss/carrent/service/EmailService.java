@@ -1,4 +1,4 @@
-package com.rcs.service;
+package com.unreallabss.carrent.service;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;

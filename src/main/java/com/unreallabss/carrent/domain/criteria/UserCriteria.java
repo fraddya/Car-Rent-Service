@@ -1,6 +1,6 @@
-package com.rcs.domain.criteria;
+package com.unreallabss.carrent.domain.criteria;
 
-import com.rcs.domain.User;
+import com.unreallabss.carrent.domain.User;
 import lombok.Data;
 
 @Data

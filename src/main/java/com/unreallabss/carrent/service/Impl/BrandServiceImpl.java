@@ -1,11 +1,11 @@
-package com.rcs.service.Impl;
+package com.unreallabss.carrent.service.Impl;
 
 
-import com.rcs.domain.Brand;
-import com.rcs.domain.base.ComplexValidationException;
-import com.rcs.enums.Status;
-import com.rcs.repository.BrandRepository;
-import com.rcs.service.BrandService;
+import com.unreallabss.carrent.domain.Brand;
+import com.unreallabss.carrent.domain.base.ComplexValidationException;
+import com.unreallabss.carrent.enums.Status;
+import com.unreallabss.carrent.repository.BrandRepository;
+import com.unreallabss.carrent.service.BrandService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

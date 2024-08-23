@@ -1,4 +1,4 @@
-package com.rcs.domain.base;
+package com.unreallabss.carrent.domain.base;
 
 
 import org.springframework.http.HttpHeaders;

@@ -1,7 +1,8 @@
-package com.rcs.domain;
+package com.unreallabss.carrent.domain;
 
-import com.rcs.domain.base.CreateModifyAwareBaseEntity;
-import com.rcs.enums.Status;
+
+import com.unreallabss.carrent.domain.base.CreateModifyAwareBaseEntity;
+import com.unreallabss.carrent.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,11 +26,8 @@ public class Vehicle extends CreateModifyAwareBaseEntity {
     private String description;
     private Status status;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user;*/
 
-    @OneToOne
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
 }

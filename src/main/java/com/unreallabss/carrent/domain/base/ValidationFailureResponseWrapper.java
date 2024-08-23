@@ -1,15 +1,12 @@
-package com.rcs.domain.base;
+package com.unreallabss.carrent.domain.base;
 
 
-import com.rcs.enums.RestApiResponseStatus;
+import com.unreallabss.carrent.enums.RestApiResponseStatus;
 
 import java.util.Collections;
 import java.util.List;
 
 
-/**
- * @author Nuwan
- */
 public class ValidationFailureResponseWrapper extends BaseResponseWrapper {
 
     private List<ValidationFailure> ValidationFailures;

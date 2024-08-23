@@ -1,8 +1,8 @@
-package com.rcs.dto.response.user;
+package com.unreallabss.carrent.dto.response.user;
 
-import com.rcs.enums.GenderType;
-import com.rcs.enums.Status;
-import com.rcs.enums.UserType;
+import com.unreallabss.carrent.enums.GenderType;
+import com.unreallabss.carrent.enums.Status;
+import com.unreallabss.carrent.enums.UserType;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package com.rcs.domain.base;
+package com.unreallabss.carrent.domain.base;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

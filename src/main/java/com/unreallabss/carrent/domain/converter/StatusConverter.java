@@ -1,7 +1,7 @@
-package com.rcs.domain.converter;
+package com.unreallabss.carrent.domain.converter;
 
 
-import com.rcs.enums.Status;
+import com.unreallabss.carrent.enums.Status;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

@@ -1,14 +1,14 @@
-package com.rcs.mapper;
+package com.unreallabss.carrent.mapper;
 
 
-import com.rcs.domain.User;
-import com.rcs.domain.criteria.UserCriteria;
-import com.rcs.dto.request.user.UserCreateRequest;
-import com.rcs.dto.request.user.UserSearchRequest;
-import com.rcs.dto.request.user.UserUpdateRequest;
-import com.rcs.dto.response.user.UserCreateResponse;
-import com.rcs.dto.response.user.UserSearchResponse;
-import com.rcs.enums.Status;
+import com.unreallabss.carrent.domain.User;
+import com.unreallabss.carrent.domain.criteria.UserCriteria;
+import com.unreallabss.carrent.dto.request.user.UserCreateRequest;
+import com.unreallabss.carrent.dto.request.user.UserSearchRequest;
+import com.unreallabss.carrent.dto.request.user.UserUpdateRequest;
+import com.unreallabss.carrent.dto.response.user.UserCreateResponse;
+import com.unreallabss.carrent.dto.response.user.UserSearchResponse;
+import com.unreallabss.carrent.enums.Status;
 import org.mapstruct.Mapper;
 
 import java.util.List;

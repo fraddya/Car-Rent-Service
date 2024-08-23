@@ -1,10 +1,9 @@
-package com.rcs.dto.response.user;
+package com.unreallabss.carrent.dto.response.user;
 
-import com.rcs.dto.request.user.UserUpdateRequest;
-import com.rcs.enums.GenderType;
-import com.rcs.enums.Status;
-import com.rcs.enums.UserType;
-import jakarta.validation.constraints.NotNull;
+
+import com.unreallabss.carrent.enums.GenderType;
+import com.unreallabss.carrent.enums.Status;
+import com.unreallabss.carrent.enums.UserType;
 import lombok.Data;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public class UserSearchResponse {
     private UserType role;
     private Status status;
 
-    private List<VehicleData> vehicle;
+    /*private List<VehicleData> vehicle;
 
     @Data
     public static class VehicleData {
@@ -41,5 +40,5 @@ public class UserSearchResponse {
         private String color;
         private String type;
         private String description;
-    }
+    }*/
 }

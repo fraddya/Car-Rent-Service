@@ -1,4 +1,4 @@
-package com.rcs.config;
+package com.unreallabss.carrent.config;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

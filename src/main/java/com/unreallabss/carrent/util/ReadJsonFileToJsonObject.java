@@ -1,4 +1,4 @@
-package com.rcs.util;
+package com.unreallabss.carrent.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

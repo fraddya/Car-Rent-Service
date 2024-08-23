@@ -1,11 +1,11 @@
-package com.rcs.service.Impl;
+package com.unreallabss.carrent.service.Impl;
 
 import com.google.firebase.FirebaseException;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
-import com.rcs.domain.NotificationMassage;
-import com.rcs.service.FirebaseMessagingService;
+import com.unreallabss.carrent.domain.NotificationMassage;
+import com.unreallabss.carrent.service.FirebaseMessagingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

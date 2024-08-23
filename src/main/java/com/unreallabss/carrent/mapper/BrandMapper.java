@@ -1,9 +1,10 @@
-package com.rcs.mapper;
+package com.unreallabss.carrent.mapper;
 
-import com.rcs.domain.Brand;
-import com.rcs.dto.request.brand.BrandCreateRequest;
-import com.rcs.dto.response.brand.BrandSearchResponse;
-import com.rcs.enums.Status;
+
+import com.unreallabss.carrent.domain.Brand;
+import com.unreallabss.carrent.dto.request.brand.BrandCreateRequest;
+import com.unreallabss.carrent.dto.response.brand.BrandSearchResponse;
+import com.unreallabss.carrent.enums.Status;
 import org.mapstruct.Mapper;
 
 import java.util.List;

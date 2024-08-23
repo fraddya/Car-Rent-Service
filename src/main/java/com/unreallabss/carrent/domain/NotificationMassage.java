@@ -1,4 +1,4 @@
-package com.rcs.domain;
+package com.unreallabss.carrent.domain;
 
 import lombok.Data;
 
