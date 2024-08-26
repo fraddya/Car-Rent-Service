@@ -1,11 +1,12 @@
 package com.unreallabss.carrent.domain;
 
-
 import com.unreallabss.carrent.domain.base.CreateModifyAwareBaseEntity;
 import com.unreallabss.carrent.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -24,6 +25,9 @@ public class Vehicle extends CreateModifyAwareBaseEntity {
     private String color;
     private String type;
     private String description;
+    private BigDecimal pricePerDay;
+    private BigDecimal pricePerKm;
+    private BigDecimal freeKm;
     private Status status;
 
     /*@ManyToOne
