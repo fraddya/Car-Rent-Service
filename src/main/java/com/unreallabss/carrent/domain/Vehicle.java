@@ -29,6 +29,8 @@ public class Vehicle extends CreateModifyAwareBaseEntity {
     private BigDecimal pricePerKm;
     private BigDecimal freeKm;
     private Status status;
+    //todo  vadi vena km ekata yana gana
+    //private List<Image> images;
 
     /*@ManyToOne
     @JoinColumn(name = "user_id")

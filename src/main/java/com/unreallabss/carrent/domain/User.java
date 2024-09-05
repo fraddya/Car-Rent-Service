@@ -11,7 +11,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -39,5 +38,9 @@ public class User extends CreateModifyAwareBaseEntity {
     private String passWord;
     private UserType role;
     private Status status;
+    //todo raiing for customer , rent vehicles count
 
+    @OneToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }
