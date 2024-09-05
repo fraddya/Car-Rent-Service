@@ -29,7 +29,7 @@ public class Company extends CreateModifyAwareBaseEntity {
     private String coverImage;
     private String registerDate;
     private String webSite;
-    private String rating;
+    private String rating;//doing this with some one rate this persion same like user also add review
     private Status status;
 
     @OneToMany
