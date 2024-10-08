@@ -38,5 +38,10 @@ public class User extends CreateModifyAwareBaseEntity {
     private String passWord;
     private UserType role;
     private Status status;
+    private String rating;//doing this with some one rate this persion
+    //todo raiing for customer , rent vehicles count
 
+    @OneToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }
