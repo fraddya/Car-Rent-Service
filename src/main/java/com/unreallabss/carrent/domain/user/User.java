@@ -1,11 +1,10 @@
-package com.unreallabss.carrent.domain;
+package com.unreallabss.carrent.domain.user;
 
 
+import com.unreallabss.carrent.domain.Company;
 import com.unreallabss.carrent.domain.base.CreateModifyAwareBaseEntity;
 import com.unreallabss.carrent.enums.GenderType;
-import com.unreallabss.carrent.enums.Status;
 import com.unreallabss.carrent.enums.UserStatus;
-import com.unreallabss.carrent.enums.UserType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

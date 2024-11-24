@@ -1,6 +1,7 @@
 package com.unreallabss.carrent.domain;
 
 import com.unreallabss.carrent.domain.base.CreateModifyAwareBaseEntity;
+import com.unreallabss.carrent.domain.user.User;
 import com.unreallabss.carrent.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;

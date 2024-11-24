@@ -1,12 +1,12 @@
 package com.unreallabss.carrent.domain.criteria;
 
-import com.unreallabss.carrent.domain.User;
+import com.unreallabss.carrent.domain.user.User;
 import lombok.Data;
 
 @Data
 public class UserCriteria extends User {
 
-    private String email;
+    private String username;
 
     private String passWord;
 

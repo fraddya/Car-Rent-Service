@@ -1,7 +1,7 @@
 package com.unreallabss.carrent.mapper;
 
 
-import com.unreallabss.carrent.domain.User;
+import com.unreallabss.carrent.domain.user.User;
 import com.unreallabss.carrent.domain.criteria.UserCriteria;
 import com.unreallabss.carrent.dto.request.user.UserCreateRequest;
 import com.unreallabss.carrent.dto.request.user.UserSearchRequest;

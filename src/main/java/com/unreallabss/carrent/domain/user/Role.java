@@ -1,4 +1,4 @@
-package com.unreallabss.carrent.domain;
+package com.unreallabss.carrent.domain.user;
 
 import com.unreallabss.carrent.enums.Status;
 import jakarta.persistence.*;

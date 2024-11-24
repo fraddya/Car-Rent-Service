@@ -2,13 +2,16 @@ package com.unreallabss.carrent.service.Impl;
 
 
 import com.querydsl.core.BooleanBuilder;
-import com.unreallabss.carrent.domain.User;
+import com.unreallabss.carrent.domain.user.QUser;
+import com.unreallabss.carrent.domain.user.User;
 import com.unreallabss.carrent.domain.base.ComplexValidationException;
 import com.unreallabss.carrent.domain.criteria.UserCriteria;
 import com.unreallabss.carrent.enums.Status;
+import com.unreallabss.carrent.enums.UserStatus;
 import com.unreallabss.carrent.enums.UserType;
 import com.unreallabss.carrent.repository.UserRepository;
 import com.unreallabss.carrent.service.UserService;
+import com.unreallabss.carrent.util.PasswordGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,15 +40,29 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User save(User user) {
-        User persistedUser = userRepository.findByEmail(user.getEmail());
-        if (persistedUser != null) {
+        BooleanBuilder builder =
+                new BooleanBuilder(QUser.user.username.equalsIgnoreCase(user.getUsername()));
+        builder.and(QUser.user.status.ne(UserStatus.DELETED));
+        Optional<User> persistedUser = userRepository.findOne(builder);
+        if (persistedUser.isPresent()) {
+            log.info("platformUserCreateRequest.username.duplicate {}", persistedUser.get().getUsername());
             throw new ComplexValidationException("User registration", "this Email already registered");
         }
-        user.setStatus(Status.ACTIVE);
+        String password = user.getPassword(); // since string is immutable create new object
+
+        if (StringUtils.isNoneBlank(user.getPassword())) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        } else {
+            user.setPassword(passwordEncoder.encode(PasswordGenerator.generatePassword()));
+        }
+        user.setStatus(UserStatus.ACTIVE);
+        user.setFailedLoginAttemptCount(0);
         user.setDateJoin(LocalDate.now());
-        if (user.getRole() == null) user.setRole(UserType.USER);
-        user.setPassWord(passwordEncoder.encode(user.getPassWord()));
+        //if (user.getRole() == null) user.setRole(UserType.USER);
+        //user.setPassWord(passwordEncoder.encode(user.getPassWord()));
         return userRepository.save(user);
+
+        ///TODO need to send Email to user with password
     }
 
     @Transactional(readOnly = true)
@@ -95,11 +112,20 @@ public class UserServiceImpl implements UserService {
         if (!userPersisted.isPresent()) {
             throw new ComplexValidationException("User retrieval", "Cannot find any User ");
         } else {
+            BooleanBuilder builder =
+                    new BooleanBuilder(QUser.user.username.equalsIgnoreCase(user.getUsername()))
+                            .and(QUser.user.id.ne(user.getId()));
+            boolean usernameExists = userRepository.exists(builder);
+            if (usernameExists) {
+                throw new ComplexValidationException("username", "User name already exist");
+            }
             User userDb = userPersisted.get();
             //updateFields(user, userDb);
             /*if (user.getVehicle() != null) {
                 updateVehicles(user, userDb);
             }*/
+
+            //TODO update fields
             return userRepository.save(userDb);
         }
     }
@@ -175,7 +201,7 @@ public class UserServiceImpl implements UserService {
     public User delete(Long id) {
         User user = userRepository.getReferenceById(id);
         if (user != null) {
-            user.setStatus(Status.DELETED);
+            user.setStatus(UserStatus.DELETED);
             return userRepository.save(user);
         }else {
             throw new ComplexValidationException("User retrieval", "Cannot find any User ");
@@ -184,15 +210,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User logIn(User user) {
-        User userPersisted = userRepository.findByEmail(user.getEmail());
+        User userPersisted = userRepository.findByUsername(user.getUsername());
         if (userPersisted != null) {
-            if (passwordEncoder.matches(user.getPassWord(), userPersisted.getPassWord())) {
+            /*if (passwordEncoder.matches(user.getPassWord(), userPersisted.getPassWord())) {
                 userPersisted.setUserLogging(LocalDateTime.now());
                 userRepository.save(userPersisted);
                 return userPersisted;
-            }
+            }*/
         }
-        throw new ComplexValidationException(user.getEmail(), "User credentials Invalid");
+        throw new ComplexValidationException(user.getUsername(), "User credentials Invalid");
     }
 
 }

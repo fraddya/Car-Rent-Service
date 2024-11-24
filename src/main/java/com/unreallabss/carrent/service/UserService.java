@@ -1,7 +1,7 @@
 package com.unreallabss.carrent.service;
 
 
-import com.unreallabss.carrent.domain.User;
+import com.unreallabss.carrent.domain.user.User;
 import com.unreallabss.carrent.domain.criteria.UserCriteria;
 import org.springframework.data.domain.Page;
 
