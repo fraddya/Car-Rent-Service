@@ -2,6 +2,8 @@ package com.unreallabss.carrent.service.Impl;
 
 
 import com.querydsl.core.BooleanBuilder;
+import com.unreallabss.carrent.config.ConfigProperties;
+import com.unreallabss.carrent.domain.user.PasswordResetToken;
 import com.unreallabss.carrent.domain.user.QUser;
 import com.unreallabss.carrent.domain.user.User;
 import com.unreallabss.carrent.domain.base.ComplexValidationException;
@@ -9,7 +11,9 @@ import com.unreallabss.carrent.domain.criteria.UserCriteria;
 import com.unreallabss.carrent.enums.Status;
 import com.unreallabss.carrent.enums.UserStatus;
 import com.unreallabss.carrent.enums.UserType;
+import com.unreallabss.carrent.repository.PasswordTokenRepository;
 import com.unreallabss.carrent.repository.UserRepository;
+import com.unreallabss.carrent.service.CryptoService;
 import com.unreallabss.carrent.service.UserService;
 import com.unreallabss.carrent.util.PasswordGenerator;
 import lombok.extern.slf4j.Slf4j;
@@ -18,24 +22,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private PasswordTokenRepository passwordTokenRepository;
+
+    @Autowired
+    private ConfigProperties configProps;
+
+    @Autowired
+    private CryptoService cryptoService;
 
     @Transactional
     @Override
@@ -219,6 +238,154 @@ public class UserServiceImpl implements UserService {
             }*/
         }
         throw new ComplexValidationException(user.getUsername(), "User credentials Invalid");
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        log.info("loading user email {}", email);
+        User user = userRepository.findByUsername(email);
+        log.info("loaded user {}", user);
+
+        if (user != null) {
+            user.getRoles().size();
+            // user.getRole().getAuthorities().size();
+            user.getRoles().forEach(r -> r.getAuthorities().size());
+            return user;
+        } else {
+            throw new UsernameNotFoundException("User not found!");
+        }
+    }
+
+    @Override
+    public void updateForSuccessLogin(User user) {
+        if (user.getStatus() == UserStatus.TEMP_LOCKED_BAD_CREDENTIALS) {
+            Optional<User> exUser = userRepository.findById(user.getId());
+            if (exUser.isPresent()) {
+                exUser.get().setFailedLoginAttemptCount(0);
+                exUser.get().setLastLoginDate(LocalDateTime.now());
+                exUser.get().setStatus(UserStatus.ACTIVE);
+                userRepository.save(exUser.get());
+            }
+        } else {
+            userRepository.updateForSuccessLogin(user.getId(), LocalDateTime.now());
+        }
+    }
+
+    @Override
+    public void updateForBadCredentialLoginFailure(String email) {
+        User user = userRepository.findByUsername(email);
+
+        if (user != null) {
+            if (user.getFailedLoginAttemptCount() + 1
+                    >= configProps.getAuth().getMaxFailedLoginAttemptsForAccountLock()) {
+                user.setStatus(UserStatus.TEMP_LOCKED_BAD_CREDENTIALS);
+            }
+            user.setFailedLoginAttemptCount(user.getFailedLoginAttemptCount() + 1);
+            user.setLastFailedLoginDate(LocalDateTime.now());
+            userRepository.save(user);
+        }
+    }
+
+    @Transactional
+    @Override
+    public void resetPassword(String code, String password) {
+        String email = cryptoService.decryptString(code);
+        User user = userRepository.findByUsername(email);
+        if (user == null) {
+            throw new ComplexValidationException("user", "Invalid use id");
+        }
+        password = passwordEncoder.encode(password);
+        userRepository.updatePasswordChange(user.getId(), password);
+    }
+
+    @Transactional
+    @Override
+    public User updateUserProfile(User user) {
+        Optional<User> currentUser = userRepository.findById(user.getId());
+
+        if (!currentUser.isPresent()) {
+            throw new ComplexValidationException("user", "Invalid use id");
+        }
+
+        currentUser.get().setUsername(user.getUsername());
+        userRepository.save(currentUser.get());
+
+        return currentUser.get();
+    }
+
+    @Transactional
+    @Override
+    public void delete(List<User> users) {
+        users.forEach(
+                user -> {
+                    Optional<User> optionalUser = userRepository.findById(user.getId());
+                    if (optionalUser.isPresent()) {
+                        user = optionalUser.get();
+                        user.setStatus(UserStatus.DELETED);
+                        try {
+                            userRepository.save(user);
+                        } catch (Exception ex) {
+                            throw new ComplexValidationException(
+                                    "user", "Error occured" + user.getId());
+                        }
+                    } else {
+                        throw new ComplexValidationException("user", "Invalid use id");
+                    }
+                });
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<User> retrieveUsersByIds(String ids) {
+        List<Long> userIds =
+                Arrays.asList(ids.split(",")).stream().map(Long::valueOf).collect(Collectors.toList());
+
+        log.info("userIds 2--->" + userIds);
+
+        return userRepository.retrieveUsersByIds(userIds);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Transactional
+    @Override
+    public void createPasswordResetTokenForUser(User user, String token) {
+        PasswordResetToken myToken = new PasswordResetToken(token, user);
+        myToken.setExpiryDate(LocalDateTime.now().plusDays(1));
+        passwordTokenRepository.save(myToken);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public User getUserByPasswordResetToken(String token) {
+        PasswordResetToken passwordResetToken = passwordTokenRepository.findByToken(token);
+        if (passwordResetToken != null) {
+            return passwordResetToken.getUser();
+        } else {
+            return null;
+        }
+    }
+
+    @Transactional
+    @Override
+    public void changeUserPassword(User user, String newPassword) {
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean checkIfValidOldPassword(User user, String oldPassword) {
+        return passwordEncoder.matches(oldPassword, user.getPassword());
+    }
+
+    @Override
+    public String getUserFirstName(Long createdUserId) {
+        return retrieve(createdUserId).getFirstName();
     }
 
 }
